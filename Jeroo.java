@@ -21,7 +21,28 @@ public class Jeroo extends JerooBase {
      *    or west end of the island (without picking flowers).
      */
     public void runCourse() {
-
+      while (!isFlower(AHEAD))
+        this.hop();
+      this.hop();
+      while (isFlower(AHEAD)) {
+        this.pick();
+        this.hop();
+        this.pick();
+      }
+      while (!isNet(AHEAD))
+        this.hop();
+      while (isNet(AHEAD)) {
+        this.toss();
+        this.hop();
+      }
+      while (!isFlower(HERE))
+        this.hop();
+      if (isWater(AHEAD))
+        this.turn(LEFT);
+      else
+        this.turn(RIGHT);
+      while (!isWater(AHEAD))
+        this.hop();
     }
 
     
